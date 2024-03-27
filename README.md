@@ -2,7 +2,7 @@
 
 Designing and implement a real-time image processing application using Apache Storm
 
-## table of contents
+## Table of contents
 
 **[Objective](#objective)**
 
@@ -18,9 +18,13 @@ Designing and implement a real-time image processing application using Apache St
 
 **[Conclusion](#conclusion)**
 
+## video
+
+[![Alternate Text](./ex.png)](./ex.mp4)
+
 ## Objective
 
-The primary goal of this project is to design andimplement a real-time image processing application using Apache Storm. Theapplication aims to showcase distributed computing principles by processingvideo frames in parallel, applying various image filters, and aggregating theresults. The project emphasizes the utilization of Apache Storm, a powerful andscalable distributed stream processing framework, to achieve efficient andreal-time image processing.
+The primary goal of this project is to design and implement a real-time image processing application using Apache Storm. The application aims to showcase distributed computing principles by processing video frames in parallel, applying various image filters, and aggregating the results. The project emphasizes the utilization of Apache Storm, a powerful and scalable distributed stream processing framework, to achieve efficient and real-time image processing.
 
 **Key Features and Objectives:**
 
@@ -42,11 +46,11 @@ The primary goal of this project is to design andimplement a real-time image pro
 
 ## Expected Outcome
 
-The successful completion of this project willresult in a robust, real-time image processing application built on ApacheStorm. The application will showcase the distributed computing capabilities ofApache Storm while demonstrating advanced image processing techniques. Theoutcomes may include visually enhanced video streams, performance metricsrelated to parallel processing, and insights into the efficiency of real-timestream processing with Apache Storm.
+The successful completion of this project will result in a robust, real-time image processing application built on ApacheStorm. The application will showcase the distributed computing capabilities ofApache Storm while demonstrating advanced image processing techniques. The outcomes may include visually enhanced video streams, performance metrics related to parallel processing, and insights into the efficiency of real-time stream processing with Apache Storm.
 
 ## Importance
 
-This project is significant as it combines theprinciples of distributed computing and real-time stream processing to addresschallenges related to continuous data streams, such as those encountered in videoprocessing. The application serves as a practical example of leveraging ApacheStorm for distributed computing tasks, demonstrating its potential in handlinglarge-scale, real-time data processing applications.
+This project is significant as it combines the principles of distributed computing and real-time stream processing to address challenges related to continuous data streams, such as those encountered in video processing. The application serves as a practical example of leveraging ApacheStorm for distributed computing tasks, demonstrating its potential in handling large-scale, real-time data processing applications.
 
 ## Main Concepts in Apache Storm
 
@@ -122,11 +126,11 @@ This project is significant as it combines theprinciples of distributed computin
 
 - Bolts can acknowledge the successful processing of tuples, and failed tuples are replayed to maintain data integrity.
 
-Apache Storm's main concepts enable the creation of fault-tolerant,scalable, and real-time data processing systems. By understanding thesecomponents, developers can design and implement distributed processingtopologies tailored to their specific use cases.
+Apache Storm's main concepts enable the creation of fault-tolerant,scalable, and real-time data processing systems. By understanding these components, developers can design and implement distributed processing topologies tailored to their specific use cases.
 
 ## System Mode
 
-In the proposed system architecture, the main objective is to leveragethe distributed processing capabilities of Apache Storm for real-time imagefiltering. The system is designed to handle video streams and apply twodistinct types of image processing elements (PEs): PE1, responsible forapplying a Gaussian blur filter, and PE2, which applies a sharpening filter toeach frame of the video.
+In the proposed system architecture, the main objective is to leverage the distributed processing capabilities of Apache Storm for real-time image filtering. The system is designed to handle video streams and apply two distinct types of image processing elements (PEs): PE1, responsible for applying a Gaussian blur filter, and PE2, which applies a sharpening filter to each frame of the video.
 
 **1\. Distributed Processing:**
 
@@ -168,15 +172,15 @@ In the proposed system architecture, the main objective is to leveragethe distri
 
 ## Details of Files
 
-The **FileHandler** class in the preprocessing package of the imageand video processing application fulfills several essential functions relatedto file management and analysis. One primary responsibility is handled by the **clearExistingOutputFolder()**method, which effectively removes the contents of the output folder, providinga clean slate for storing processed frames. The **createOutputFolder()**method ensures the existence of the output folder, creating it if it does notalready exist. This function is crucial for maintaining an organized structurefor the processed output.
+The **FileHandler** class in the preprocessing package of the image and video processing application fulfills several essential functions related to file management and analysis. One primary responsibility is handled by the **clearExistingOutputFolder()**method, which effectively removes the contents of the output folder, providing a clean slate for storing processed frames. The **createOutputFolder()**method ensures the existence of the output folder, creating it if it does not already exist. This function is crucial for maintaining an organized structure for the processed output.
 
-For the analysis phase, the **createAnalysisWriter(String filePath)**method initializes a **PrintWriter** to facilitate writing analysis data toa file. This includes individual frame brightness data, achieved through the **writeBrightnessToAnalysisFile()**method. Additionally, the **writeOverallBrightnessToAnalysisFile()** methodappends overall brightness statistics, such as the total frame count andaverage brightness, providing a comprehensive summary in the analysis file.
+For the analysis phase, the **createAnalysisWriter(String filePath)**method initializes a **PrintWriter** to facilitate writing analysis data toa file. This includes individual frame brightness data, achieved through the **writeBrightnessToAnalysisFile()**method. Additionally, the **writeOverallBrightnessToAnalysisFile()** method appends overall brightness statistics, such as the total frame count and average brightness, providing a comprehensive summary in the analysis file.
 
-The **saveProcessedFrame(Mat frame, int frameCount, StringoutputFolder)** method is responsible for storing processed frames in theoutput folder. It constructs the file path based on the frame count and writesthe frame to that location using the OpenCV library's **Imgcodecs.imwrite()**.
+The **saveProcessedFrame(Mat frame, int frameCount, String outputFolder)** method is responsible for storing processed frames in the output folder. It constructs the file path based on the frame count and writes the frame to that location using the OpenCV library's **Imgcodecs.imwrite()**.
 
-To ensure proper resource management, the **closeAnalysisWriter(PrintWriterwriter)** method is implemented to close the **PrintWriter** once allnecessary data has been written. Lastly, the **displayStatistics(intframeCount, double averageBrightness)** method prints overall processingstatistics, such as the total frame count and average brightness, to theconsole. The **FileHandler** class plays a vital role in maintaining theintegrity of the output and providing valuable insights into the preprocessingstage of the application.
+To ensure proper resource management, the **closeAnalysisWriter(PrintWriter writer)** method is implemented to close the **PrintWriter** once all necessary data has been written. Lastly, the **displayStatistics(int frameCount, double averageBrightness)** method prints overall processing statistics, such as the total frame count and average brightness, to the console. The **FileHandler** class plays a vital role in maintaining the integrity of the output and providing valuable insights into the preprocessing stage of the application.
 
-The **FrameAnalyzer** class, a part of the preprocessing package,encompasses essential functionalities for frame analysis in the image and videoprocessing application. The class consists of methods designed to transform andanalyze frames during the preprocessing stage.
+The **FrameAnalyzer** class, a part of the preprocessing package,encompasses essential functionalities for frame analysis in the image and video processing application. The class consists of methods designed to transform and analyze frames during the preprocessing stage.
 
 The **convertToGray(Mat frame)** method is responsible for convertinga given frame from its original color format to grayscale using the OpenCVlibrary's **Imgproc.cvtColor()** function. This step simplifies subsequentprocessing tasks and enhances efficiency by reducing the frame to a singlechannel.
 
